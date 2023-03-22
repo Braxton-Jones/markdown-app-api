@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 const documentRouter = require('./routes/documents');
 const PORT = process.env.PORT;
+const cors = require('cors')
 
 const api = express();
 
@@ -10,15 +11,7 @@ const api = express();
 api.use(express.json());
 
 // Set CORS headers
-api.use((req, res, next) => {
-	res.setHeader(
-		'Access-Control-Allow-Origin',
-		'https://markdown-api.onrender.com/',
-	);
-	res.setHeader('Access-Control-Allow-Methods', 'GET, POST, DELETE, PATCH');
-	res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-	next();
-});
+api.use(cors())
 
 api.use(documentRouter);
 
