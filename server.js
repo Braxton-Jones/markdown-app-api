@@ -15,7 +15,7 @@ api.use(
 	}),
 );
 api.use(express.json())
-api.use("/api/documents/", documentRouter)
+api.use(documentRouter)
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI)
